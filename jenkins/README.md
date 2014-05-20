@@ -46,7 +46,7 @@ sudo npm install -g karma-ng-html2js-preprocessor
 ## FPM
 
 ```
-sudo apt-get install rubygems
+sudo apt-get install ruby ruby-dev
 sudo gem install fpm
 ```
 
