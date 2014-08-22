@@ -6,8 +6,8 @@
 
 include_recipe "mongodb::default"
 
-apt_repository 'br-repository' do
-  uri 'deb http://dl.bintray.com/rafaeljusto/deb'
+apt_repository 'bintray' do
+  uri 'http://dl.bintray.com/rafaeljusto/deb'
   distribution 'trusty'
   components ['main']
 end
