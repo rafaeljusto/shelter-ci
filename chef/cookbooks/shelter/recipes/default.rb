@@ -6,16 +6,16 @@
 
 include_recipe "mongodb::default"
 
-shelter_latest = Chef::Config[:file_cache_path] + "/shelter_latest_amd64.deb"
-
-remote_file shelter_latest do
-  source "http://dl.bintray.com/rafaeljusto/deb/shelter_latest_amd64.deb"
-  mode "0644"
+apt_repository 'br-repository' do
+  uri 'deb http://dl.bintray.com/rafaeljusto/deb'
+  distribution 'trusty'
+  components ['main']
 end
 
-execute "install-shelter" do
-  command "dpkg --no-triggers -i " + shelter_latest
-  creates "/usr/shelter/etc/shelter.conf"
+ENV['DEBIAN_FRONTEND'] = "noninteractive"
+apt_package 'shelter' do
+  action :upgrade
+  options "-y --force-yes"
 end
 
 template "/usr/shelter/etc/shelter.conf" do
@@ -35,6 +35,7 @@ template "/usr/shelter/etc/shelter.conf" do
   )
 end
 
-execute "run-shelter" do
-  command "service shelter start"
+service 'shelter' do
+  provider Chef::Provider::Service::Upstart
+  action :start
 end
