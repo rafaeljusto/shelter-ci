@@ -44,8 +44,8 @@
     "listeners": [
       {
         "ip": "0.0.0.0",
-        "port": 4443,
-        "tls": true
+        "port": 8080,
+        "tls": false
       }
     ],
 
@@ -67,8 +67,8 @@
     "listeners": [
       {
         "ip": "0.0.0.0",
-        "port": 4444,
-        "tls": true
+        "port": 80,
+	"tls": false
       }
     ]
   },
@@ -85,7 +85,7 @@
     "templatesPath": "templates/notification",
 
     "smtpServer": {
-      "server": "smtp.gmail.com",
+      "server": "<%= @smtp_server %>",
       "port": 587,
 
       "auth": {

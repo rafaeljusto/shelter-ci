@@ -30,6 +30,7 @@ template "/usr/shelter/etc/shelter.conf" do
     :db_uri             => node["shelter"]["db_uri"],
     :scan_resolver      => node["shelter"]["scan_resolver"],
     :scan_resolver_port => node["shelter"]["scan_resolver_port"],
+    :smtp_auth_user     => node["shelter"]["smtp_server"],
     :smtp_auth_user     => node["shelter"]["smtp_auth_user"],
     :smtp_auth_pwd      => node["shelter"]["smtp_auth_pwd"]
   )

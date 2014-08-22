@@ -1,5 +1,6 @@
 {
   "shelter": {
+    "smtp_server": "smtp.gmail.com",
     "smtp_auth_user": "user",
     "smtp_auth_pwd": "password"
   },
