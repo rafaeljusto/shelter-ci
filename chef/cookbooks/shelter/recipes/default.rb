@@ -7,9 +7,9 @@
 include_recipe "mongodb::default"
 
 apt_repository 'bintray' do
-  uri 'http://dl.bintray.com/rafaeljusto/deb'
-  distribution 'trusty'
-  components ['main']
+  uri "http://dl.bintray.com/rafaeljusto/deb"
+  components ["/"]
+  action :add
 end
 
 ENV['DEBIAN_FRONTEND'] = "noninteractive"
