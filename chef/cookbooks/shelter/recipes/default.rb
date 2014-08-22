@@ -26,6 +26,7 @@ template "/usr/shelter/etc/shelter.conf" do
   variables(
     :base_path          => node["shelter"]["base_path"],
     :log_filename       => node["shelter"]["log_filename"],
+    :server_ip          => node["shelter"]["server_ip"],
     :db_name            => node["shelter"]["db_name"],
     :db_uri             => node["shelter"]["db_uri"],
     :scan_resolver      => node["shelter"]["scan_resolver"],
