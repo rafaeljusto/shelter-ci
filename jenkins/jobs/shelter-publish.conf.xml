@@ -4,7 +4,7 @@
   <description>System created for registries to periodically validate and alert domains about DNS or DNSSEC misconfiguration.</description>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.8">
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.9">
       <projectUrl>https://github.com/rafaeljusto/shelter/</projectUrl>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
   </properties>
@@ -34,7 +34,13 @@ git config --global user.name "Rafael Justo"
 git config --global user.email adm@rafael.net.br
 git remote set-url origin "ssh://git@github.com/rafaeljusto/shelter.git"
 git tag -a -m "Version ${version}, Release ${BUILD_NUMBER}" "${id}"
-git push origin "${id}"</command>
+git push origin "${id}"
+
+# Send new version to Docker
+cd $GOPATH/src/github.com/rafaeljusto/shelter/deploy/docker
+docker.io build --rm -t rafaeljusto/shelter .
+docker.io login --username="rafaeljusto" --password="<password>"
+docker.io push rafaeljusto/shelter</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
