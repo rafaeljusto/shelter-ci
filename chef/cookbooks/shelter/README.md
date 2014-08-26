@@ -1,23 +1,20 @@
 shelter Cookbook
 ================
-TODO: Enter the cookbook description here.
+System created for registries to periodically validate and alert domains about DNS or DNSSEC misconfiguration.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+For more information check:
+https://github.com/rafaeljusto/shelter/wiki.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
 #### packages
-- `toaster` - shelter needs toaster to brown your bagel.
+- `apt` - shelter needs apt to download the debian package.
+- `mongodb` - shelter uses mongodb to store all the data.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### shelter::default
 <table>
   <tr>
@@ -27,10 +24,46 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['shelter']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['shelter']['base_path']</tt></td>
+    <td>String</td>
+    <td>Installation location</td>
+    <td><tt>'/usr/shelter'</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['shelter']['log_filename']</tt></td>
+    <td>String</td>
+    <td>Log location</td>
+    <td><tt>'var/log/shelter.log'</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['shelter']['server_ip']</tt></td>
+    <td>String</td>
+    <td>Interface to listen to</td>
+    <td><tt>'0.0.0.0'</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['shelter']['db_name']</tt></td>
+    <td>String</td>
+    <td>Name of the Mongodb database</td>
+    <td><tt>'shelter'</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['shelter']['db_uri']</tt></td>
+    <td>String</td>
+    <td>Address and port of the Mongodb database</td>
+    <td><tt>'localhost:27017'</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['shelter']['scan_resolver']</tt></td>
+    <td>String</td>
+    <td>Resolver to use for DNS queries</td>
+    <td><tt>'8.8.8.8'</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['shelter']['scan_resolver_port']</tt></td>
+    <td>Integer</td>
+    <td>Resolver port to use for DNS queries</td>
+    <td><tt>53</tt></td>
   </tr>
 </table>
 
@@ -53,9 +86,7 @@ Just include `shelter` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -65,4 +96,8 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Rafael Dantas Justo
+
+Copyright 2014 Rafael Dantas Justo. All rights reserved.
+Use of this source code is governed by a GPL
+license that can be found in the LICENSE file.
